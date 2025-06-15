@@ -1,1 +1,51 @@
+@PART[strl-eng-375-mcf]:AFTER[SterlingSystems]
+{
+	@MODULE[ModuleEnginesFX]:HAS[#engineID[Light]]
+	{
+		@maxThrust = 36
+	}
+	@MODULE[ModuleEnginesFX]:HAS[#engineID[Heavy]]
+	{
+		@maxThrust = 72
+	}
+}
+// Stats for these engines taken from https://www.projectrho.com/public_html/rocket/slowerlight2.php#daedalus
+// engines are heavily downsized, so thrust is not changed. The Isp of the 2.5m engine is higher than it should be.
+@PART[strl-eng-500-icf]:AFTER[SterlingSystems]
+{
+	@MODULE[ModuleEnginesFX]
+	{
+		@atmosphereCurve
+		{
+			@key,0 = 0 1080000
+		}
+	}
+}
+@PART[strl-eng-250-icf]:AFTER[SterlingSystems]
+{
+	@MODULE[ModuleEnginesFX]
+	{
+		@atmosphereCurve
+		{
+			@key,0 = 0 939000
+		}
+	}
+}
 
+// Stats for this engine taken from https://www.projectrho.com/public_html/rocket/enginelist3.php#ambeam
+// To give this engine a use alongside FFT's BCAM (given it's higher mass and heat production), we buff the Isp. According to https://arxiv.org/abs/1205.2281, higher Isps are achivable, with approx 0.69%c being the upper limit.
+// 299792458 * 0.69 / 9.80665 = 21093522.8666 seconds
+// The nozzle being more efficient means that more particles will be channeled by it producing more thrust. 
+// 21093522.8666 / 10193680 = 2.06927457666 * thrust increase
+// 11740 * 2.06927457666 = 24293.28353 kN
+@PART[strl-eng-1000-bcam]:AFTER[SterlingSystems]
+{
+	@MODULE[ModuleEnginesFX]
+	{
+    @maxThrust = 24293.28353
+		@atmosphereCurve
+		{
+			@key,0 = 0 21093522.8666
+		}
+	}
+}
