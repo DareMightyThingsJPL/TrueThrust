@@ -42,7 +42,7 @@
 {
 	@MODULE[ModuleEnginesFX]
 	{
-    @maxThrust = 24293.28353
+		@maxThrust = 24293.28353
 		@atmosphereCurve
 		{
 			@key,0 = 0 21093522.8666
